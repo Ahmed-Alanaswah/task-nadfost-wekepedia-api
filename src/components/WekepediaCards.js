@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { SearchContext } from "../SearchContext";
 
-const WekepediaCards = ({ results }) => {
+const WekepediaCards = () => {
+	const resultsContext = useContext(SearchContext);
+
 	return (
 		<div className="results">
-			{results.map((result, i) => {
+			{resultsContext.finalResults.map((result, i) => {
 				const url = `https://en.wikipedia.org/?curid=${result.pageid}`;
 				return (
-					<a href={url} target="_blank" rel="noreferrer">
-						<div className="result" key={i}>
+					<a href={url} target="_blank" rel="noreferrer" key={i}>
+						<div className="result">
 							<h3>{result.title}</h3>
-							<p dangerouslySetInnerHTML={{ __html: result.snippet }}></p>
+							<p
+								dangerouslySetInnerHTML={{
+									__html: result.snippet,
+								}}
+							></p>
 						</div>
 					</a>
 				);

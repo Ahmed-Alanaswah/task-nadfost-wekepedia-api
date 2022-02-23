@@ -1,27 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { SearchContext } from "../SearchContext";
 
-const Header = ({ setSearch, search, handleSearch, setResults, results }) => {
-	const clearData = () => {
-		setResults([]);
-	};
-
+const Header = () => {
+	const searchTerm = useContext(SearchContext);
+	console.log(searchTerm);
 	return (
 		<header>
 			<h1>Wekepedia Api</h1>
-			<form className="search-box" onKeyUp={handleSearch}>
+			<form className="search-box" onKeyUp={searchTerm.handleSearch}>
 				<input
 					type="text"
 					placeholder="what are you looking for?"
-					value={search}
+					value={searchTerm.search}
 					onChange={(e) => {
-						setSearch(e.target.value);
+						searchTerm.setSearch(e.target.value);
 					}}
 				/>
-				{search && (
+				{searchTerm.search && (
 					<span
 						onClick={() => {
-							clearData();
-							setSearch("");
+							searchTerm.clearData();
+							searchTerm.setSearch("");
 						}}
 					>
 						x
