@@ -1,1 +1,0 @@
-# task-nadfost-wekepedia-api

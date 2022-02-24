@@ -6,7 +6,8 @@ const Header = () => {
 	console.log(searchTerm);
 	return (
 		<header>
-			<h1>Wekepedia Api</h1>
+			<h1>Wikipedia Api</h1>
+			<p>Write here for a random articles</p>
 			<form className="search-box" onKeyUp={searchTerm.handleSearch}>
 				<input
 					type="text"
